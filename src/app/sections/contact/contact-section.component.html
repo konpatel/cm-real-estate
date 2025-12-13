@@ -1,0 +1,149 @@
+<section id="contact" class="contact">
+  <div class="contact__container">
+    <!-- Section Header -->
+    <div class="contact__header">
+      <h2 class="contact__title">Get in Touch</h2>
+      <p class="contact__subtitle">
+        Ready to find your perfect property? We're here to help. Reach out to us today.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout -->
+    <div class="contact__content">
+      <!-- Contact Form -->
+      <div class="contact__form-container">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <!-- Name Field -->
+          <mat-form-field appearance="outline" class="contact-form__field">
+            <mat-label>Your Name</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              placeholder="Enter your full name"
+              aria-label="Your name"
+            />
+            <mat-icon matPrefix aria-hidden="true">person</mat-icon>
+            <mat-error *ngIf="contactForm.get('name')?.invalid">
+              {{ getErrorMessage('name') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Email Field -->
+          <mat-form-field appearance="outline" class="contact-form__field">
+            <mat-label>Email Address</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              type="email"
+              placeholder="your.email@example.com"
+              aria-label="Your email address"
+            />
+            <mat-icon matPrefix aria-hidden="true">email</mat-icon>
+            <mat-error *ngIf="contactForm.get('email')?.invalid">
+              {{ getErrorMessage('email') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Phone Field -->
+          <mat-form-field appearance="outline" class="contact-form__field">
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              formControlName="phone"
+              type="tel"
+              placeholder="+30 XXX XXX XXXX"
+              aria-label="Your phone number"
+            />
+            <mat-icon matPrefix aria-hidden="true">phone</mat-icon>
+            <mat-error *ngIf="contactForm.get('phone')?.invalid">
+              {{ getErrorMessage('phone') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Message Field -->
+          <mat-form-field appearance="outline" class="contact-form__field contact-form__field--textarea">
+            <mat-label>Message</mat-label>
+            <textarea
+              matInput
+              formControlName="message"
+              rows="5"
+              placeholder="Tell us about your property needs..."
+              aria-label="Your message"
+            ></textarea>
+            <mat-icon matPrefix aria-hidden="true">message</mat-icon>
+            <mat-error *ngIf="contactForm.get('message')?.invalid">
+              {{ getErrorMessage('message') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Submit Button -->
+          <button
+            mat-raised-button
+            type="submit"
+            class="contact-form__submit"
+            [disabled]="contactForm.invalid"
+            aria-label="Send message"
+          >
+            <mat-icon aria-hidden="true">send</mat-icon>
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact__info-container">
+        <h3 class="contact-info__title">Contact Information</h3>
+        <p class="contact-info__description">
+          Prefer to reach us directly? Use any of the methods below.
+        </p>
+
+        <div class="contact-info">
+          <!-- Phone -->
+          <div class="contact-info__item">
+            <div class="contact-info__icon-container">
+              <mat-icon class="contact-info__icon" aria-hidden="true">phone</mat-icon>
+            </div>
+            <div class="contact-info__details">
+              <span class="contact-info__label">Phone</span>
+              <a
+                [href]="contactInfo.phoneLink"
+                class="contact-info__link"
+                aria-label="Call us at {{ contactInfo.phone }}"
+              >
+                {{ contactInfo.phone }}
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-info__item">
+            <div class="contact-info__icon-container">
+              <mat-icon class="contact-info__icon" aria-hidden="true">email</mat-icon>
+            </div>
+            <div class="contact-info__details">
+              <span class="contact-info__label">Email</span>
+              <a
+                href="mailto:{{ contactInfo.email }}"
+                class="contact-info__link"
+                aria-label="Email us at {{ contactInfo.email }}"
+              >
+                {{ contactInfo.email }}
+              </a>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="contact-info__item">
+            <div class="contact-info__icon-container">
+              <mat-icon class="contact-info__icon" aria-hidden="true">location_on</mat-icon>
+            </div>
+            <div class="contact-info__details">
+              <span class="contact-info__label">Address</span>
+              <span class="contact-info__text">{{ contactInfo.address }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+<article class="property-card">
+  <!-- Property Image -->
+  <div class="property-card__image-container">
+    <img
+      [src]="property.imageUrl"
+      [alt]="property.title + ' - ' + property.location"
+      class="property-card__image"
+    />
+    <div class="property-card__type-badge" [class.property-card__type-badge--sale]="property.type === 'sale'" [class.property-card__type-badge--rent]="property.type === 'rent'">
+      {{ property.type === 'sale' ? 'For Sale' : 'For Rent' }}
+    </div>
+  </div>
+
+  <!-- Property Details -->
+  <div class="property-card__content">
+    <!-- Title & Location -->
+    <div class="property-card__header">
+      <h3 class="property-card__title">{{ property.title }}</h3>
+      <div class="property-card__location">
+        <mat-icon aria-hidden="true">location_on</mat-icon>
+        <span>{{ property.location }}</span>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="property-card__price">{{ property.priceLabel }}</div>
+
+    <!-- Features (Bedrooms, Bathrooms, Size) -->
+    <div class="property-card__features">
+      <div class="property-card__feature">
+        <mat-icon aria-hidden="true">bed</mat-icon>
+        <span>{{ property.bedrooms }} <span class="sr-only">bedrooms</span></span>
+      </div>
+      <div class="property-card__feature">
+        <mat-icon aria-hidden="true">bathtub</mat-icon>
+        <span>{{ property.bathrooms }} <span class="sr-only">bathrooms</span></span>
+      </div>
+      <div class="property-card__feature">
+        <mat-icon aria-hidden="true">square_foot</mat-icon>
+        <span>{{ property.size }} m² <span class="sr-only">square meters</span></span>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <button
+      mat-raised-button
+      class="property-card__cta"
+      (click)="onContactClick()"
+      aria-label="Contact us about {{ property.title }}"
+    >
+      <mat-icon aria-hidden="true">phone</mat-icon>
+      <span>Contact About This Property</span>
+    </button>
+  </div>
+</article>

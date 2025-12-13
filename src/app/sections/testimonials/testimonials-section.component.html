@@ -1,0 +1,41 @@
+<section id="testimonials" class="testimonials">
+  <div class="testimonials__container">
+    <!-- Section Header -->
+    <div class="testimonials__header">
+      <h2 class="testimonials__title">What Our Clients Say</h2>
+      <p class="testimonials__subtitle">
+        Read testimonials from our satisfied clients who found their perfect properties with us
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="testimonials__grid">
+      <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+        <!-- Rating Stars -->
+        <div class="testimonial-card__rating">
+          <mat-icon
+            *ngFor="let star of getStarArray(testimonial.rating)"
+            class="testimonial-card__star"
+            aria-hidden="true"
+          >
+            star
+          </mat-icon>
+        </div>
+
+        <!-- Comment -->
+        <p class="testimonial-card__comment">{{ testimonial.comment }}</p>
+
+        <!-- Author Info -->
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">
+            <mat-icon aria-hidden="true">person</mat-icon>
+          </div>
+          <div class="testimonial-card__info">
+            <h3 class="testimonial-card__name">{{ testimonial.name }}</h3>
+            <p class="testimonial-card__role">{{ testimonial.role }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
