@@ -1,0 +1,208 @@
+.about {
+  padding: 5rem 2rem;
+  background: var(--color-primary-50);
+
+  @media (max-width: 1024px) {
+    padding: 4rem 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 3rem 1rem;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  // Section Header
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    @media (max-width: 640px) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary-900);
+    margin: 0 0 1rem;
+  }
+
+  &__subtitle {
+    font-family: var(--font-secondary);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--color-neutral-600);
+    margin: 0;
+  }
+
+  // Main Content Layout
+  &__content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: start;
+
+    @media (max-width: 1024px) {
+      gap: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  // Story Content
+  &__story {
+    @media (max-width: 768px) {
+      order: 1;
+    }
+  }
+
+  &__paragraph {
+    font-family: var(--font-secondary);
+    font-size: clamp(1rem, 1.1vw, 1.0625rem);
+    line-height: 1.8;
+    color: var(--color-neutral-700);
+    margin: 0 0 1.5rem;
+
+    strong {
+      color: var(--color-primary-800);
+      font-weight: 600;
+    }
+
+    &--intro {
+      font-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+      line-height: 1.7;
+    }
+
+    &:last-of-type {
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      margin-bottom: 1.25rem;
+
+      &:last-of-type {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  // CTA Button
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1rem 2rem !important;
+    font-size: 1.0625rem !important;
+    font-weight: 600 !important;
+    font-family: var(--font-secondary) !important;
+    background-color: var(--color-accent-500) !important;
+    color: var(--color-primary-900) !important;
+    border-radius: var(--radius-md) !important;
+    text-transform: none !important;
+    letter-spacing: 0.01em !important;
+    transition: all var(--transition-base) !important;
+    box-shadow: var(--shadow-md) !important;
+
+    mat-icon {
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    &:hover {
+      background-color: var(--color-accent-600) !important;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold) !important;
+    }
+
+    @media (max-width: 640px) {
+      width: 100%;
+      justify-content: center;
+      padding: 0.875rem 1.5rem !important;
+      font-size: 1rem !important;
+    }
+  }
+
+  // Stats Section
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.5rem 2rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+
+    @media (max-width: 768px) {
+      order: 2;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}
+
+// Stat Card
+.stat-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-50) 0%,
+    var(--color-accent-100) 100%
+  );
+  transition: all var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.25rem 0.875rem;
+  }
+
+  &__value {
+    font-family: var(--font-primary);
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent-700);
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: clamp(2rem, 3.5vw, 2.5rem);
+    }
+  }
+
+  &__label {
+    font-family: var(--font-secondary);
+    font-size: clamp(0.875rem, 1vw, 0.9375rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-primary-800);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @media (max-width: 768px) {
+      font-size: 0.8125rem;
+    }
+  }
+}

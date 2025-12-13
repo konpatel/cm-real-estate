@@ -1,0 +1,52 @@
+<section id="about" class="about">
+  <div class="about__container">
+    <!-- Section Header -->
+    <div class="about__header">
+      <h2 class="about__title">About Christiano Immobiliare</h2>
+      <p class="about__subtitle">
+        Your trusted partner for premium renovated properties in Athens
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="about__content">
+      <!-- Story -->
+      <div class="about__story">
+        <p class="about__paragraph about__paragraph--intro">
+          <strong>Christiano Immobiliare</strong> is a boutique real estate agency specializing in premium renovated properties in the heart of Athens. We believe that every property tells a story, and ours is one of quality, expertise, and unwavering commitment to our clients.
+        </p>
+
+        <p class="about__paragraph">
+          With over <strong>5 years of experience</strong> in the Greek real estate market, we've developed an intimate understanding of Athens' neighborhoods, property values, and market trends. Our expertise allows us to guide you through every step of your real estate journey with confidence and care.
+        </p>
+
+        <p class="about__paragraph">
+          Unlike traditional agencies, we focus exclusively on properties we've personally renovated to the highest standards. This unique approach means we can guarantee the quality of every home we offer, from the structural integrity to the finest finishing touches. Each property reflects our dedication to excellence and attention to detail.
+        </p>
+
+        <p class="about__paragraph">
+          <strong>Quality, transparency, and client satisfaction</strong> are at the heart of everything we do. We're not just selling properties—we're helping you find your perfect home or investment in one of Europe's most historic and vibrant cities.
+        </p>
+
+        <!-- CTA Button -->
+        <button
+          mat-raised-button
+          class="about__cta"
+          (click)="scrollToContact()"
+          aria-label="Contact us to learn more"
+        >
+          <mat-icon aria-hidden="true">phone_in_talk</mat-icon>
+          <span>Get in Touch</span>
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="about__stats">
+        <div class="stat-card" *ngFor="let stat of stats">
+          <div class="stat-card__value">{{ stat.value }}</div>
+          <div class="stat-card__label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
