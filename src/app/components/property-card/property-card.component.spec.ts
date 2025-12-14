@@ -80,6 +80,7 @@ describe('PropertyCardComponent', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       const image = compiled.querySelector('.property-card__image') as HTMLImageElement;
       expect(image).toBeTruthy();
+      // When imageUrls is not provided, falls back to imageUrl
       expect(image.src).toContain(mockProperty.imageUrl);
     });
 
@@ -256,6 +257,148 @@ describe('PropertyCardComponent', () => {
       expect(features[0].textContent).toContain(mockProperty.bedrooms.toString());
       expect(features[1].textContent).toContain(mockProperty.bathrooms.toString());
       expect(features[2].textContent).toContain(mockProperty.size.toString());
+    });
+  });
+
+  describe('Image Carousel', () => {
+    it('should use imageUrl when imageUrls is not provided', () => {
+      expect(component.images).toEqual([mockProperty.imageUrl]);
+      expect(component.hasMultipleImages).toBe(false);
+    });
+
+    it('should use imageUrls when provided', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      fixture.detectChanges();
+
+      expect(component.images).toEqual(['image1.jpg', 'image2.jpg', 'image3.jpg']);
+      expect(component.hasMultipleImages).toBe(true);
+    });
+
+    it('should display first image initially', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      component.currentImageIndex = 0;
+      fixture.detectChanges();
+
+      expect(component.currentImage).toBe('image1.jpg');
+    });
+
+    it('should navigate to next image', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      component.currentImageIndex = 0;
+
+      const mockEvent = new Event('click');
+      component.nextImage(mockEvent);
+
+      expect(component.currentImageIndex).toBe(1);
+      expect(component.currentImage).toBe('image2.jpg');
+    });
+
+    it('should loop to first image from last image', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      component.currentImageIndex = 2;
+
+      const mockEvent = new Event('click');
+      component.nextImage(mockEvent);
+
+      expect(component.currentImageIndex).toBe(0);
+    });
+
+    it('should navigate to previous image', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      component.currentImageIndex = 1;
+
+      const mockEvent = new Event('click');
+      component.previousImage(mockEvent);
+
+      expect(component.currentImageIndex).toBe(0);
+    });
+
+    it('should loop to last image from first image', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      component.currentImageIndex = 0;
+
+      const mockEvent = new Event('click');
+      component.previousImage(mockEvent);
+
+      expect(component.currentImageIndex).toBe(2);
+    });
+
+    it('should navigate to specific image', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      component.currentImageIndex = 0;
+
+      const mockEvent = new Event('click');
+      component.goToImage(2, mockEvent);
+
+      expect(component.currentImageIndex).toBe(2);
+    });
+
+    it('should not show carousel controls when only one image', () => {
+      const compiled = fixture.nativeElement as HTMLElement;
+      const controls = compiled.querySelector('.property-card__carousel-controls');
+      expect(controls).toBeFalsy();
+    });
+
+    it('should show carousel controls when multiple images', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const controls = compiled.querySelector('.property-card__carousel-controls');
+      expect(controls).toBeTruthy();
+    });
+
+    it('should show carousel indicators when multiple images', () => {
+      const propertyWithMultipleImages = {
+        ...mockProperty,
+        imageUrls: ['image1.jpg', 'image2.jpg', 'image3.jpg']
+      };
+      component.property = propertyWithMultipleImages;
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const indicators = compiled.querySelectorAll('.property-card__indicator');
+      expect(indicators.length).toBe(3);
+    });
+
+    it('should stop event propagation on navigation', () => {
+      const mockEvent = new Event('click');
+      spyOn(mockEvent, 'stopPropagation');
+
+      component.nextImage(mockEvent);
+      expect(mockEvent.stopPropagation).toHaveBeenCalled();
     });
   });
 });

@@ -38,6 +38,9 @@ export interface Property {
   /** URL to property image */
   imageUrl: string;
 
+  /** Array of image URLs for property carousel (optional) */
+  imageUrls?: string[];
+
   /** Detailed property description */
   description: string;
 

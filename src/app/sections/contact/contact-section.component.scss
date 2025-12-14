@@ -126,6 +126,10 @@
         border-width: 2px !important;
       }
 
+      .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+        border-width: 0 !important;
+      }
+
       .mat-mdc-form-field-icon-prefix {
         color: var(--color-primary-600);
         padding-right: 0.75rem;
@@ -232,7 +236,7 @@
       var(--color-accent-100) 0%,
       var(--color-accent-200) 100%
     );
-    border-radius: 50%;
+    // border-radius: 50%;
 
     @media (max-width: 640px) {
       width: 45px;

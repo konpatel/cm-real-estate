@@ -44,6 +44,38 @@
     }
   }
 
+  // Logo
+  &__logo {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-image {
+      height: 300px;
+      margin-top: 1rem;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+
+      @media (max-width: 1024px) {
+        height: 110px;
+      }
+
+      @media (max-width: 768px) {
+        height: 90px;
+      }
+
+      @media (max-width: 640px) {
+        height: 70px;
+      }
+    }
+  }
+
   // Headline
   &__headline {
     font-family: var(--font-primary);

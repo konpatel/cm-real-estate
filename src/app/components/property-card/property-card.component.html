@@ -1,13 +1,44 @@
 <article class="property-card">
-  <!-- Property Image -->
+  <!-- Property Image Carousel -->
   <div class="property-card__image-container">
     <img
-      [src]="property.imageUrl"
+      [src]="currentImage"
       [alt]="property.title + ' - ' + property.location"
       class="property-card__image"
     />
     <div class="property-card__type-badge" [class.property-card__type-badge--sale]="property.type === 'sale'" [class.property-card__type-badge--rent]="property.type === 'rent'">
       {{ property.type === 'sale' ? 'For Sale' : 'For Rent' }}
+    </div>
+
+    <!-- Carousel Controls (only show if multiple images) -->
+    <div class="property-card__carousel-controls" *ngIf="hasMultipleImages">
+      <button
+        class="property-card__carousel-btn property-card__carousel-btn--prev"
+        (click)="previousImage($event)"
+        aria-label="Previous image"
+        mat-icon-button
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button
+        class="property-card__carousel-btn property-card__carousel-btn--next"
+        (click)="nextImage($event)"
+        aria-label="Next image"
+        mat-icon-button
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+
+    <!-- Carousel Indicators (only show if multiple images) -->
+    <div class="property-card__carousel-indicators" *ngIf="hasMultipleImages">
+      <button
+        *ngFor="let image of images; let i = index"
+        class="property-card__indicator"
+        [class.property-card__indicator--active]="i === currentImageIndex"
+        (click)="goToImage(i, $event)"
+        [attr.aria-label]="'Go to image ' + (i + 1)"
+      ></button>
     </div>
   </div>
 

@@ -3,10 +3,10 @@ export const environment = {
   apiUrl: 'http://localhost:3000/api',
 
   contact: {
-    phone: '+30 698 880 8848',
-    phoneLink: 'tel:+306988808848',
+    phone: '+30 691 234 5678',  // REPLACE WITH ACTUAL
+    phoneLink: 'tel:+306912345678',
     email: 'info@christianoimmobiliare.gr',
-    address: 'Kolonaki, Athens, Greece'
+    address: 'Neo Psychiko, Athens, Greece'  // REPLACE WITH ACTUAL
   },
 
   seo: {

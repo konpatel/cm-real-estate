@@ -51,6 +51,7 @@
     letter-spacing: 0.05em;
     backdrop-filter: blur(8px);
     box-shadow: var(--shadow-sm);
+    z-index: 2;
 
     &--sale {
       background: rgba(212, 175, 55, 0.95);
@@ -60,6 +61,97 @@
     &--rent {
       background: rgba(139, 111, 71, 0.95);
       color: white;
+    }
+  }
+
+  // Carousel Controls
+  &__carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &__carousel-btn {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    padding: 0 !important;
+    transition: all var(--transition-base) !important;
+    backdrop-filter: blur(4px);
+
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8) !important;
+      transform: scale(1.1);
+    }
+
+    &--prev {
+      margin-left: 0.5rem;
+    }
+
+    &--next {
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      width: 32px !important;
+      height: 32px !important;
+      min-width: 32px !important;
+
+      mat-icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  // Carousel Indicators
+  &__carousel-indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  &__indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    backdrop-filter: blur(4px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: scale(1.2);
+    }
+
+    &--active {
+      background: var(--color-accent-500);
+      width: 24px;
+      border-radius: 4px;
     }
   }
 
